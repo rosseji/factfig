@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on A Hugo website</title>
+    <title>Posts on Factions and Figures</title>
     <link>/post/</link>
-    <description>Recent content in Posts on A Hugo website</description>
+    <description>Recent content in Posts on Factions and Figures</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 31 May 2017 00:00:00 +0000</lastBuildDate>
@@ -17,16 +17,10 @@
       <pubDate>Wed, 31 May 2017 00:00:00 +0000</pubDate>
       
       <guid>/2017/05/31/test/</guid>
-      <description>Nathan, Aidan and I can now blog from R so we will put up some of the other content we went through here just for fun. Then afterwards we can use if for Factions and Figures…</description>
-    </item>
-    
-    <item>
-      <title>test</title>
-      <link>/2017/05/31/test/</link>
-      <pubDate>Wed, 31 May 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/2017/05/31/test/</guid>
-      <description>hello? how about now? … and …? third time lucky? one more time</description>
+      <description>Nathan, Aidan and I can now blog from R so we will put up some of the other content we went through here just for fun. Then afterwards we can use if for Factions and Figures…
+For example some cool packages:
+library(plotly) library(sf) And there were stickers…
+ </description>
     </item>
     
   </channel>

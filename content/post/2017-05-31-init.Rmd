@@ -11,3 +11,14 @@ hide_authorbox: no
 ---
 
 Nathan, Aidan and I can now blog from R so we will put up some of the other content we went through here just for fun. Then afterwards we can use if for Factions and Figures...
+
+For example some cool packages:
+
+``` {r, eval = F}
+library(plotly)
+library(sf)
+```
+
+And there were stickers...
+
+![](http://dplyr.tidyverse.org/logo.png)
