@@ -1,5 +1,5 @@
 ---
-title: Mebourne Data Science Week 2017
+title: Melbourne Data Science Week 2017
 author: Ross and Nathan
 date: '2017-05-31'
 slug: test
