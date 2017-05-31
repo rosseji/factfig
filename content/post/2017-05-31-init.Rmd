@@ -1,5 +1,5 @@
 ---
-title: Mebourne Data Science Week 2017
+title: Melbourne Data Science Week 2017
 author: Ross and Nathan
 date: '2017-05-31'
 slug: test
@@ -10,9 +10,9 @@ draft: no
 hide_authorbox: no
 ---
 
-Nathan, Aidan and I can now blog from R so we will put up some of the other content we went through here just for fun. Then afterwards we can use if for Factions and Figures...
+Nathan, Aidan and I can now blog from R so we will put up some of the other content we went through here just for fun. Then afterwards we can use it for Factions and Figures...
 
-For example some cool packages:
+For example, some cool packages:
 
 ``` {r, eval = F}
 library(plotly)
