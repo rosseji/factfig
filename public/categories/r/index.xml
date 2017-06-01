@@ -33,5 +33,17 @@ a machine learning model (trying to predict whether it will rain based on histor
 Tips: Max depth is the amount of binary splits. Min bucket is the amount of data required for the model to include the category (ie exclude) rattle logs the R code which you can just run in Rstudio (Export)</description>
     </item>
     
+    <item>
+      <title>Melbourne Data Science Week 2017</title>
+      <link>/2017/05/31/test/</link>
+      <pubDate>Wed, 31 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/05/31/test/</guid>
+      <description>Nathan, Aidan and I can now blog from R so we will put up some of the other content we went through here just for fun. Then afterwards we can use it for Factions and Figures…
+For example, some cool packages:
+library(plotly) library(sf) And there were stickers…
+ </description>
+    </item>
+    
   </channel>
 </rss>

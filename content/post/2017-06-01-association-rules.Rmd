@@ -5,9 +5,12 @@ date: '2017-06-01'
 slug: association-rules
 categories: [R]
 tags: []
+disable_comments: no
+draft: no
+hide_authorbox: no
 ---
   
-  Measuring the likeihood that two or more factor levels (categories) appear together in observation (row).
+Measuring the likeihood that two or more factor levels (categories) appear together in observation (row).
 You could imagine that Aidan would want to know how likely is it that a particular beers are purchased on the same bill...
 
 ![](https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAARhAAAAJDY1OTkwNWI1LTAzZTItNDczYS04ZDU5LTM2M2JiNWU0MWUyOQ.png)
