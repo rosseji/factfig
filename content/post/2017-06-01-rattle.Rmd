@@ -19,3 +19,9 @@ a machine learning model (trying to predict whether it will rain based on histor
 ... a decision tree model:
 
 <img src="https://github.com/rosseji/factfig/blob/master/images/model1%20tree.png?raw=true" width="700">
+
+
+Tips: 
+Max depth is the amount of binary splits.
+Min bucket is the amount of data required for the model to include the category (ie exclude)
+rattle logs the R code which you can just run in Rstudio (Export)

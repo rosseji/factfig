@@ -19,7 +19,8 @@
       <guid>/2017/06/01/rattle/</guid>
       <description>So we are getting to work on a virtual machine just to use some fast specs, 32 core CPU and 52Gb RAM… Should be fun…
 a machine learning model (trying to predict whether it will rain based on historic data…) in four clicks
-… a decision tree model:</description>
+… a decision tree model:
+Tips: Max depth is the amount of binary splits. Min bucket is the amount of data required for the model to include the category (ie exclude) rattle logs the R code which you can just run in Rstudio (Export)</description>
     </item>
     
   </channel>
