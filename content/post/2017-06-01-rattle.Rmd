@@ -1,0 +1,11 @@
+---
+title: rattle for machine learning
+author: Ross
+date: '2017-06-01'
+slug: rattle
+categories:
+  - R
+tags: []
+---
+
+![I'm running a cloud service to access a 32 core CPU with 52gb ram!](/Users/Ross/Documents/R/factfig/images/cloud.png)

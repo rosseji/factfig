@@ -6,10 +6,20 @@
     <description>Recent content on Factions and Figures</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 31 May 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Jun 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>rattle for machine learning</title>
+      <link>/2017/06/01/rattle/</link>
+      <pubDate>Thu, 01 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/06/01/rattle/</guid>
+      <description>I’m running a cloud service to access a 32 core CPU with 52gb ram!
+ </description>
+    </item>
     
     <item>
       <title>Melbourne Data Science Week 2017</title>
