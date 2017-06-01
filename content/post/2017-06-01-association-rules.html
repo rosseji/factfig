@@ -1,5 +1,5 @@
 ---
-title: Association Rules
+title: association rules
 author: Ross
 date: '2017-06-01'
 slug: association-rules
@@ -14,47 +14,8 @@ tags: []
 <img src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAARhAAAAJDY1OTkwNWI1LTAzZTItNDczYS04ZDU5LTM2M2JiNWU0MWUyOQ.png" />
 
 </div>
-<pre class="r"><code>library(datasets)
-titanic.raw &lt;- as.data.frame(Titanic)
-titanic.raw &lt;- titanic.raw[1:4]
+<pre class="r"><code>library(arules)
 
-library(arules)</code></pre>
-<pre><code>## Loading required package: Matrix</code></pre>
-<pre><code>## 
-## Attaching package: &#39;arules&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     abbreviate, write</code></pre>
-<pre class="r"><code>library(magrittr)## load required library
-rules.all &lt;- titanic.raw %&gt;% apriori() ## run the APRIORI algorithm</code></pre>
-<pre><code>## Apriori
-## 
-## Parameter specification:
-##  confidence minval smax arem  aval originalSupport maxtime support minlen
-##         0.8    0.1    1 none FALSE            TRUE       5     0.1      1
-##  maxlen target   ext
-##      10  rules FALSE
-## 
-## Algorithmic control:
-##  filter tree heap memopt load sort verbose
-##     0.1 TRUE TRUE  FALSE TRUE    2    TRUE
-## 
-## Absolute minimum support count: 3 
-## 
-## set item appearances ...[0 item(s)] done [0.00s].
-## set transactions ...[10 item(s), 32 transaction(s)] done [0.00s].
-## sorting and recoding items ... [10 item(s)] done [0.00s].
-## creating transaction tree ... done [0.00s].
-## checking subsets of size 1 2 3 done [0.00s].
-## writing ... [0 rule(s)] done [0.00s].
-## creating S4 object  ... done [0.00s].</code></pre>
-<pre class="r"><code>## ----have a look at rules------------------------------------------------
-rules.all %&gt;% length() ## number of rules discovered</code></pre>
-<pre><code>## [1] 0</code></pre>
-<pre class="r"><code>rules.all %&gt;% inspect() ## print all rules
-
-## ----mine rules with constraints, tidy=F---------------------------------
-## run APRIORI again to find rules with rhs containing &quot;Survived&quot; only
 rules.surv &lt;- titanic.raw %&gt;% apriori(
              control = list(verbose=F),
              parameter = list(minlen=2, supp=0.005, conf=0.8),
@@ -65,8 +26,51 @@ rules.surv &lt;- titanic.raw %&gt;% apriori(
 quality(rules.surv) &lt;- rules.surv %&gt;% quality() %&gt;% round(digits=3)
 ## sort rules by lift
 rules.surv.sorted &lt;- rules.surv %&gt;% sort(by=&quot;lift&quot;)
+
 ## ----inspect rules-------------------------------------------------------
 rules.surv.sorted %&gt;% inspect() ## print rules</code></pre>
-<p>Fraction of transactions that contain both X and Y support -&gt; Fraction of transactions/obs that contain both LHS and RHS confidence -&gt; Measures how often each item in RHS appears in transactions/obs that contain LHS</p>
+<p>Which got you a nice output:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">lhs</th>
+<th align="left">div</th>
+<th align="left">rhs</th>
+<th align="right">support</th>
+<th align="right">confidence</th>
+<th align="right">lift</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Class=2nd, Age=Child</td>
+<td align="left">=&gt;</td>
+<td align="left">Survived=Yes</td>
+<td align="right">0.011</td>
+<td align="right">1.000</td>
+<td align="right">3.096</td>
+</tr>
+<tr class="even">
+<td align="left">Class=2nd, Sex=Female, Age=Child</td>
+<td align="left">=&gt;</td>
+<td align="left">Survived=Yes</td>
+<td align="right">0.006</td>
+<td align="right">1.000</td>
+<td align="right">3.096</td>
+</tr>
+<tr class="odd">
+<td align="left">Class=1st, Sex=Female</td>
+<td align="left">=&gt;</td>
+<td align="left">Survived=Yes</td>
+<td align="right">0.064</td>
+<td align="right">0.972</td>
+<td align="right">3.010</td>
+</tr>
+</tbody>
+</table>
+<div id="definitions" class="section level3">
+<h3>Definitions:</h3>
+<p>support -&gt; Fraction of transactions/obs that contain both LHS and RHS confidence -&gt; Measures how often each item in RHS appears in transactions/obs that contain LHS</p>
 <p>lift -&gt; A lift value greater than 1 could indicate that LHS and RHS appear more often together than expected. A lift smaller than 1 could indicate that LHS and RHS appear less often together than expected</p>
-<p>Can use association rules to predict/model future combinations…</p>
+<p>One can use association rules to predict/model future combinations…</p>
+</div>

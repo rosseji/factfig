@@ -1,5 +1,5 @@
 ---
-title: Association Rules
+title: association rules
 author: Ross
 date: '2017-06-01'
 slug: association-rules
@@ -12,21 +12,12 @@ You could imagine that Aidan would want to know how likely is it that a particul
 
 ![](https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAARhAAAAJDY1OTkwNWI1LTAzZTItNDczYS04ZDU5LTM2M2JiNWU0MWUyOQ.png)
 
-``` {r}
-library(datasets)
-titanic.raw <- as.data.frame(Titanic)
-titanic.raw <- titanic.raw[1:4]
 
+
+
+``` {r, eval = F, echo = T}
 library(arules)
-library(magrittr)## load required library
-rules.all <- titanic.raw %>% apriori() ## run the APRIORI algorithm
 
-## ----have a look at rules------------------------------------------------
-rules.all %>% length() ## number of rules discovered
-rules.all %>% inspect() ## print all rules
-
-## ----mine rules with constraints, tidy=F---------------------------------
-## run APRIORI again to find rules with rhs containing "Survived" only
 rules.surv <- titanic.raw %>% apriori(
              control = list(verbose=F),
              parameter = list(minlen=2, supp=0.005, conf=0.8),
@@ -37,12 +28,27 @@ rules.surv <- titanic.raw %>% apriori(
 quality(rules.surv) <- rules.surv %>% quality() %>% round(digits=3)
 ## sort rules by lift
 rules.surv.sorted <- rules.surv %>% sort(by="lift")
+
 ## ----inspect rules-------------------------------------------------------
 rules.surv.sorted %>% inspect() ## print rules
-
 ```
 
-Fraction of transactions that contain both X and Y
+Which got you a nice output:
+
+```{r, echo=FALSE}
+df <- dplyr::tibble(lhs = list(c("Class=2nd","Age=Child"),
+                          c("Class=2nd","Sex=Female","Age=Child"),
+                          c("Class=1st","Sex=Female")),
+                    div = c("=>","=>","=>"),
+                    rhs = c("Survived=Yes","Survived=Yes","Survived=Yes"),
+                    support = c(0.011,0.006,0.064),
+                    confidence = c(1.000,1.000,0.972),
+                    lift = c(3.096,3.096,3.010))
+
+knitr::kable(df)
+```
+
+### Definitions:
 support -> Fraction of transactions/obs that contain both LHS and RHS
 confidence -> Measures how often each item in RHS appears in transactions/obs that contain LHS
 
@@ -50,4 +56,4 @@ lift ->
 A lift value greater than 1  could indicate that LHS and RHS appear more often together than expected. 
 A lift smaller than 1 could indicate that LHS and RHS appear less often together than expected
 
-Can use association rules to predict/model future combinations...
+One can use association rules to predict/model future combinations...
