@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>Association Rules</title>
+      <link>/2017/06/01/association-rules/</link>
+      <pubDate>Thu, 01 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/06/01/association-rules/</guid>
+      <description>Measuring the likeihood that two or more factor levels (categories) appear together in observation (row). You could imagine that Aidan would want to know how likely is it that a particular beers are purchased on the same bill…
+ library(datasets) titanic.raw &amp;lt;- as.data.frame(Titanic) titanic.raw &amp;lt;- titanic.raw[1:4] library(arules) ## Loading required package: Matrix ## ## Attaching package: &amp;#39;arules&amp;#39; ## The following objects are masked from &amp;#39;package:base&amp;#39;: ## ## abbreviate, write library(magrittr)## load required library rules.</description>
+    </item>
+    
+    <item>
       <title>rattle for machine learning</title>
       <link>/2017/06/01/rattle/</link>
       <pubDate>Thu, 01 Jun 2017 00:00:00 +0000</pubDate>

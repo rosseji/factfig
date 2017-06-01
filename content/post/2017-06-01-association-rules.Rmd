@@ -1,0 +1,53 @@
+---
+title: Association Rules
+author: Ross
+date: '2017-06-01'
+slug: association-rules
+categories: [R]
+tags: []
+---
+  
+  Measuring the likeihood that two or more factor levels (categories) appear together in observation (row).
+You could imagine that Aidan would want to know how likely is it that a particular beers are purchased on the same bill...
+
+![](https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAARhAAAAJDY1OTkwNWI1LTAzZTItNDczYS04ZDU5LTM2M2JiNWU0MWUyOQ.png)
+
+``` {r}
+library(datasets)
+titanic.raw <- as.data.frame(Titanic)
+titanic.raw <- titanic.raw[1:4]
+
+library(arules)
+library(magrittr)## load required library
+rules.all <- titanic.raw %>% apriori() ## run the APRIORI algorithm
+
+## ----have a look at rules------------------------------------------------
+rules.all %>% length() ## number of rules discovered
+rules.all %>% inspect() ## print all rules
+
+## ----mine rules with constraints, tidy=F---------------------------------
+## run APRIORI again to find rules with rhs containing "Survived" only
+rules.surv <- titanic.raw %>% apriori(
+             control = list(verbose=F),
+             parameter = list(minlen=2, supp=0.005, conf=0.8),
+             appearance = list(rhs=c("Survived=No",
+                                     "Survived=Yes"),
+                               default="lhs"))
+## keep three decimal places
+quality(rules.surv) <- rules.surv %>% quality() %>% round(digits=3)
+## sort rules by lift
+rules.surv.sorted <- rules.surv %>% sort(by="lift")
+## ----inspect rules-------------------------------------------------------
+rules.surv.sorted %>% inspect() ## print rules
+
+```
+
+Fraction of transactions that contain both X and Y
+support -> Fraction of transactions/obs that contain both LHS and RHS
+confidence -> Measures how often each item in RHS appears in transactions/obs that contain LHS
+
+lift -> 
+A lift value greater than 1  could indicate that LHS and RHS appear more often together than expected. 
+A lift smaller than 1 could indicate that LHS and RHS appear less often together than expected
+
+Can use association rules to predict/model future combinations...
