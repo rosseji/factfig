@@ -26,4 +26,4 @@ Max depth is the amount of binary splits.
 Min bucket is the amount of data required for the model to include the category (ie exclude)
 rattle logs the R code which you can just run in Rstudio (Export)
 
-Partitioning data to have data to train the model, and then other data to test the data on.
+Partitioning data to have data to train the model, and then other data to test the model on.
