@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R Packages on Factions and Figures</title>
+    <link>/categories/r-packages/</link>
+    <description>Recent content in R Packages on Factions and Figures</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 02 Jun 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/r-packages/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>dealing with missing data</title>
+      <link>/2017/06/02/dealing-with-missing-data/</link>
+      <pubDate>Fri, 02 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/06/02/dealing-with-missing-data/</guid>
+      <description>We meet a great guy, Nick, who is based out of Monash Uni. He’s made two cool packages that deal with missing data!
+narnia
+devtools::install_github(&amp;quot;njtierney/narnia&amp;quot;) library(narnia) and
+visdat
+devtools::install_github(&amp;quot;njtierney/visdat&amp;quot;) library(visdat) Might be useful for things like “HoursWorked” in H.</description>
+    </item>
+    
+  </channel>
+</rss>

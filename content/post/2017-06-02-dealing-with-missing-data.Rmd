@@ -1,0 +1,30 @@
+---
+title: dealing with missing data
+author: Ross
+date: '2017-06-02'
+slug: dealing-with-missing-data
+categories:
+  - R
+  - R packages
+tags: []
+---
+
+
+We meet a great guy, [Nick](https://github.com/njtierney), who is based out of Monash Uni. He's made two cool packages that deal with missing data!
+
+[narnia](https://github.com/njtierney/narnia)
+```{r, eval = F}
+devtools::install_github("njtierney/narnia")
+library(narnia)
+```
+
+and
+
+[visdat](https://github.com/njtierney/visdat)
+```{r, eval=FALSE}
+devtools::install_github("njtierney/visdat")
+library(visdat)
+```
+
+
+Might be useful for things like "HoursWorked" in H.
