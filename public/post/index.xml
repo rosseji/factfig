@@ -6,10 +6,22 @@
     <description>Recent content in Posts on Factions and Figures</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 02 Jun 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Jun 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>machine learning</title>
+      <link>/2017/06/07/machine-learning/</link>
+      <pubDate>Wed, 07 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/06/07/machine-learning/</guid>
+      <description>The three methods of machine learning are: classification, clustering, and regression.
+Classification is the easiest one to visualise, so we spent most of our time on that.
+First tip was straight out of the school of Aidan: visualise your model in the data space, rather than just visualising your data in the model space:
+  I understood part of the method of classification as learning that defining characteristics from a history (a sample data set with known categories) and create a map in the data space to differentiate between the categories.</description>
+    </item>
     
     <item>
       <title>dealing with missing data</title>
