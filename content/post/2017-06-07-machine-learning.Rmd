@@ -1,0 +1,28 @@
+---
+title: machine learning
+author: Ross
+date: '2017-06-07'
+slug: machine-learning
+categories:
+  - R
+tags: []
+---
+
+The three methods of machine learning are: classification, clustering, and regression.
+
+Classification is the easiest one to visualise, so we spent most of our time on that.
+
+First tip was straight out of the school of Aidan: visualise your model in the data space, rather than just visualising your data in the model space:
+
+![](/Users/Ross/Documents/R/factfig/images/unnamed-chunk-2-1.png)
+
+![](/Users/Ross/Documents/R/factfig/images/unnamed-chunk-3-1.png)
+
+
+I understood part of the method of classification as learning that defining characteristics from a history (a sample data set with known categories) and create a map in the data space to differentiate between the categories.
+
+![](/Users/Ross/Documents/R/factfig/images/unnamed-chunk-11-1.png)
+
+![](/Users/Ross/Documents/R/factfig/images/unnamed-chunk-12-1.png)
+
+more to add...
