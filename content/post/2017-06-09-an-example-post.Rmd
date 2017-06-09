@@ -1,0 +1,29 @@
+---
+title: an example post
+author: Ross
+date: '2017-06-09'
+slug: an-example-post
+categories:
+  - R
+  - R packages
+tags: []
+---
+
+Hi Alex! This is `Rmarkdown` + `blogdown` ...
+
+![We can use gifs!](http://media2.giphy.com/media/c5PHIq9sXsV6o/giphy.gif)
+![This might work](http://i0.kym-cdn.com/photos/images/newsfeed/000/149/623/tumblr_lofvxyGrCJ1qj3n00o1_500.gif)
+
+
+
+
+```{r, echo = F}
+
+library(ggplot2)
+
+ggplot(iris, aes(x = Sepal.Width, y = Petal.Width, col = Species)) + geom_point(alpha = 0.5)
+
+
+```
+
+Cool plot...
