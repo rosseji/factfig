@@ -1,25 +1,75 @@
----
-title: "R Markdown"
-author: "Nathan"
-date: '2017-06-14'
-output:
-  html_document: 
-    theme: paper
-    toc: true
-    number_sections: true
-    toc_depth: 2
-    highlight: tango
-draft: no
-hide_authorbox: no
-disable_comments: no
-slug: r-markdown
-tags: []
-categories: R
----
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.21" />
+
+
+<title>R Markdown - Factions and Figures</title>
+<meta property="og:title" content="R Markdown - Factions and Figures">
 
 
 
-<p>The tutorial files can be found at <a href="https://github.com/rbind/yihui/issues/14" class="uri">https://github.com/rbind/yihui/issues/14</a></p>
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="../../../../css/fonts.css" media="all">
+<link rel="stylesheet" href="../../../../css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="../../../../" class="nav-logo">
+    <img src="../../../../images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="../../../../about/">About</a></li>
+    
+    <li><a href="https://github.com/rstudio/blogdown">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/rstudio">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">8 min read</span>
+    
+
+    <h1 class="article-title">R Markdown</h1>
+
+    
+    <span class="article-date">2017/06/14</span>
+    
+
+    <div class="article-content">
+      <p>The tutorial files can be found at <a href="https://github.com/rbind/yihui/issues/14" class="uri">https://github.com/rbind/yihui/issues/14</a></p>
 <p>All slides available at <a href="https://slides.yihui.name/2017-DSM-rmarkdown-Yihui-Xie.html#1" class="uri">https://slides.yihui.name/2017-DSM-rmarkdown-Yihui-Xie.html#1</a></p>
 <p>Before you get started learning how to create many different types of documents with R Markdown, <strong>you’ll have to run the following code</strong>:</p>
 <pre class="r"><code>install.packages(c(&#39;rmarkdown&#39;, &#39;bookdown&#39;, &#39;tufte&#39;, &#39;rticles&#39;, &#39;xaringan&#39;, &#39;devtools&#39;))
@@ -44,7 +94,7 @@ toc: true
 fit &lt;- lm(dist ~ speed, data = cars)
 b &lt;- coef(fit)
 plot(fit)</code></pre>
-<p><img src="/post/2017-06-14-RMarkdown_files/figure-html/unnamed-chunk-2-1.png" width="672" /><img src="/post/2017-06-14-RMarkdown_files/figure-html/unnamed-chunk-2-2.png" width="672" /><img src="/post/2017-06-14-RMarkdown_files/figure-html/unnamed-chunk-2-3.png" width="672" /><img src="/post/2017-06-14-RMarkdown_files/figure-html/unnamed-chunk-2-4.png" width="672" /></p>
+<p><img src="../../../../post/2017-06-14-RMarkdown_files/figure-html/unnamed-chunk-2-1.png" width="672" /><img src="../../../../post/2017-06-14-RMarkdown_files/figure-html/unnamed-chunk-2-2.png" width="672" /><img src="../../../../post/2017-06-14-RMarkdown_files/figure-html/unnamed-chunk-2-3.png" width="672" /><img src="../../../../post/2017-06-14-RMarkdown_files/figure-html/unnamed-chunk-2-4.png" width="672" /></p>
 <pre class="r"><code># ``` (ignore hash)</code></pre>
 <p>To insert the result of your code, simply refer to the variable created in your code with a wrap of <code>``</code>. For example: The slope of the regression is 3.9324088 (This is r b[2] with a wrap of <code>``</code>).</p>
 </div>
@@ -367,7 +417,7 @@ function (fig_width = 5, fig_height = 4, fig_caption = TRUE,
 ##  [7] -1.4131238  0.9346530  1.3716589  0.1257779</code></pre>
 <pre class="r"><code>plot(dist ~ speed, cars)  # a scatterplot</code></pre>
 <div class="figure"><span id="fig:chunk-label"></span>
-<img src="/post/2017-06-14-RMarkdown_files/figure-html/chunk-label-1.png" alt="A figure caption." width="672" />
+<img src="../../../../post/2017-06-14-RMarkdown_files/figure-html/chunk-label-1.png" alt="A figure caption." width="672" />
 <p class="caption">
 Figure 1: A figure caption.
 </p>
@@ -383,3 +433,55 @@ Figure 1: A figure caption.
 <hr />
 <p>All these and more are available to you in R! Simply create a new R Markdown document using RStudio, and select one of the many templates available.</p>
 </div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="../../../../index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="../../../../images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="../../../../js/math-code.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+  }
+});
+</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

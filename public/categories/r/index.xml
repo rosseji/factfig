@@ -6,10 +6,23 @@
     <description>Recent content in R on Factions and Figures</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Jun 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 14 Jun 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>R Markdown</title>
+      <link>/2017/06/14/r-markdown/</link>
+      <pubDate>Wed, 14 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/06/14/r-markdown/</guid>
+      <description>The tutorial files can be found at https://github.com/rbind/yihui/issues/14
+All slides available at https://slides.yihui.name/2017-DSM-rmarkdown-Yihui-Xie.html#1
+Before you get started learning how to create many different types of documents with R Markdown, you’ll have to run the following code:
+install.packages(c(&amp;#39;rmarkdown&amp;#39;, &amp;#39;bookdown&amp;#39;, &amp;#39;tufte&amp;#39;, &amp;#39;rticles&amp;#39;, &amp;#39;xaringan&amp;#39;, &amp;#39;devtools&amp;#39;)) devtools::install_github(c(&amp;#39;rstudio/blogdown&amp;#39;)) You’ll also have to download LaTeX.
+YAML First off, you need to establish your YAML metadata at the beginning of your document. (Yihui told us YAML stood for “Yet Another Markdown Language”, but the internet assures me it’s “YAML Ain’t Markup Language”)</description>
+    </item>
     
     <item>
       <title>an example post</title>
