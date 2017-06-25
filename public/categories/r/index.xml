@@ -23,7 +23,7 @@ Never knew what %% does. It gives the mode…
 Straight line through the data….
 forcast packge defaults to Akaike’s Information Criterion (AIC) for it’s selection…
 Some tools that my tutors made:
-## Loading required package: zoo ## ## Attaching package: &amp;#39;zoo&amp;#39; ## The following objects are masked from &amp;#39;package:base&amp;#39;: ## ## as.Date, as.Date.numeric ## Loading required package: tseries ## Loading required package: smooth ## This is package &amp;quot;smooth&amp;quot;, v1.</description>
+setwd(&amp;quot;/Users/rosseji/Dropbox/TrendLock/ISF/forecasting with R/&amp;quot;) # Load the three time series, as before ts1 &amp;lt;- ts(scan(&amp;quot;ts1.txt&amp;quot;), start=c(2011,1), frequency=4) ts2 &amp;lt;- ts(scan(&amp;quot;ts2.txt&amp;quot;), start=c(2011,1), frequency=12) ts3 &amp;lt;- ts(scan(&amp;quot;ts3.</description>
     </item>
     
     <item>

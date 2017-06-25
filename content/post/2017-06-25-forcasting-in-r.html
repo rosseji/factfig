@@ -19,30 +19,6 @@ tags: []
 <p>Straight line through the data….</p>
 <p><code>forcast</code> packge defaults to Akaike’s Information Criterion (AIC) for it’s selection…</p>
 <p>Some tools that my tutors made:</p>
-<pre><code>## Loading required package: zoo</code></pre>
-<pre><code>## 
-## Attaching package: &#39;zoo&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     as.Date, as.Date.numeric</code></pre>
-<pre><code>## Loading required package: tseries</code></pre>
-<pre><code>## Loading required package: smooth</code></pre>
-<pre><code>## This is package &quot;smooth&quot;, v1.9.9</code></pre>
-<pre><code>## Loading required package: MAPA</code></pre>
-<pre><code>## Loading required package: parallel</code></pre>
-<pre><code>## Loading required package: RColorBrewer</code></pre>
-<pre><code>## Loading required package: glmnet</code></pre>
-<pre><code>## Loading required package: Matrix</code></pre>
-<pre><code>## Loading required package: foreach</code></pre>
-<pre><code>## Loaded glmnet 2.0-10</code></pre>
-<pre><code>## Loading required package: neuralnet</code></pre>
-<pre><code>## Loading required package: MASS</code></pre>
-<pre><code>## Loading required package: plotrix</code></pre>
-<pre><code>## 
-## Attaching package: &#39;TStools&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:smooth&#39;:
-## 
-##     sowhat</code></pre>
 <pre class="r"><code>setwd(&quot;/Users/rosseji/Dropbox/TrendLock/ISF/forecasting with R/&quot;)
 # Load the three time series, as before
 ts1 &lt;- ts(scan(&quot;ts1.txt&quot;), start=c(2011,1), frequency=4)
@@ -54,15 +30,14 @@ ts3 &lt;- ts(scan(&quot;ts3.txt&quot;), start=c(2011,1), frequency=12)
 y &lt;- ts2
 
 # First we plot the series to get a general impression
-plot(y)
-
-# ----- Trend -----
+plot(y)</code></pre>
+<p><img src="/post/2017-06-25-forcasting-in-r_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code># ----- Trend -----
 # Let us look for trend in the data, by calculating the Centred Moving
 # Average
 cma &lt;- cmav(y, outplot=1)</code></pre>
 <pre><code>## Model is being refit with current smoothing parameters but initial states are being re-estimated.
 ## Set &#39;use.initial.values=TRUE&#39; if you want to re-use existing initial values.</code></pre>
-<p><img src="/post/2017-06-25-forcasting-in-r_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <pre class="r"><code>print(cma)</code></pre>
 <pre><code>##           Jan      Feb      Mar      Apr      May      Jun      Jul
 ## 2011 2659.533 2673.576 2687.619 2701.662 2715.705 2729.748 2743.792
@@ -76,17 +51,84 @@ cma &lt;- cmav(y, outplot=1)</code></pre>
 ## 2013 3251.208 3268.625 3290.833 3313.750 3335.208
 ## 2014 3486.667 3517.083 3543.583 3564.083 3585.500
 ## 2015 3855.042 3886.042 3917.042 3948.043 3979.043</code></pre>
-<pre class="r"><code>cmav(y, outplot=1, fill=FALSE)</code></pre>
-<p><img src="/post/2017-06-25-forcasting-in-r_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<pre class="r"><code>cmav(y, outplot=1, fill=T)</code></pre>
+<pre><code>## Model is being refit with current smoothing parameters but initial states are being re-estimated.
+## Set &#39;use.initial.values=TRUE&#39; if you want to re-use existing initial values.</code></pre>
+<p><img src="/post/2017-06-25-forcasting-in-r_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <pre><code>##           Jan      Feb      Mar      Apr      May      Jun      Jul
-## 2011       NA       NA       NA       NA       NA       NA 2743.792
+## 2011 2659.533 2673.576 2687.619 2701.662 2715.705 2729.748 2743.792
 ## 2012 2857.417 2877.625 2900.708 2926.958 2951.000 2970.708 2985.583
 ## 2013 3097.250 3123.875 3152.542 3174.375 3195.250 3215.542 3235.042
 ## 2014 3358.375 3382.542 3394.708 3402.625 3412.292 3430.125 3458.042
-## 2015 3614.167 3654.917 3696.167 3729.208 3762.042 3793.042       NA
+## 2015 3614.167 3654.917 3696.167 3729.208 3762.042 3793.042 3824.042
 ##           Aug      Sep      Oct      Nov      Dec
 ## 2011 2757.833 2781.042 2801.042 2813.125 2834.042
 ## 2012 2998.333 3008.833 3025.167 3051.875 3076.500
 ## 2013 3251.208 3268.625 3290.833 3313.750 3335.208
 ## 2014 3486.667 3517.083 3543.583 3564.083 3585.500
-## 2015       NA       NA       NA       NA       NA</code></pre>
+## 2015 3855.042 3886.042 3917.042 3948.043 3979.043</code></pre>
+<pre class="r"><code>#Seasonality
+seasplot(ts2)</code></pre>
+<pre><code>## Model is being refit with current smoothing parameters but initial states are being re-estimated.
+## Set &#39;use.initial.values=TRUE&#39; if you want to re-use existing initial values.</code></pre>
+<p><img src="/post/2017-06-25-forcasting-in-r_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre><code>## Results of statistical testing
+## Evidence of trend: TRUE  (pval: 0)
+## Evidence of seasonality: TRUE  (pval: 0)</code></pre>
+<pre class="r"><code>seasplot(ts1)</code></pre>
+<pre><code>## Model is being refit with current smoothing parameters but initial states are being re-estimated.
+## Set &#39;use.initial.values=TRUE&#39; if you want to re-use existing initial values.</code></pre>
+<p><img src="/post/2017-06-25-forcasting-in-r_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<pre><code>## Results of statistical testing
+## Evidence of trend: FALSE  (pval: 0.623)
+## Evidence of seasonality: FALSE  (pval: 0.392)</code></pre>
+<p>Addative vs Multiplicative</p>
+<p>An argument in decompse. In the ts below we can that the seasonality grows as time goes on (ie the y components widens)</p>
+<pre class="r"><code>plot(ts2)</code></pre>
+<p><img src="/post/2017-06-25-forcasting-in-r_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Seeing internal trends… (like two peaks)</p>
+<pre class="r"><code>seasplot(y,outplot=3)</code></pre>
+<pre><code>## Model is being refit with current smoothing parameters but initial states are being re-estimated.
+## Set &#39;use.initial.values=TRUE&#39; if you want to re-use existing initial values.</code></pre>
+<p><img src="/post/2017-06-25-forcasting-in-r_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre><code>## Results of statistical testing
+## Evidence of trend: TRUE  (pval: 0)
+## Evidence of seasonality: TRUE  (pval: 0)</code></pre>
+<p>Test in a moving average</p>
+<p>Non-paramatric test don’t assume norm dist and hence are closer to realistic data…</p>
+<pre class="r"><code>coxstuart(cma)</code></pre>
+<pre><code>## $H
+## [1] 1
+## 
+## $p.value
+## [1] 9.313226e-10
+## 
+## $Htxt
+## [1] &quot;H1: There is trend (upwards or downwards)&quot;</code></pre>
+<p>Test seasonality</p>
+<pre class="r"><code>seasplot(cma)</code></pre>
+<pre><code>## Model is being refit with current smoothing parameters but initial states are being re-estimated.
+## Set &#39;use.initial.values=TRUE&#39; if you want to re-use existing initial values.</code></pre>
+<p><img src="/post/2017-06-25-forcasting-in-r_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre><code>## Results of statistical testing
+## Evidence of trend: TRUE  (pval: 0)
+## Evidence of seasonality: FALSE  (pval: 0.097)</code></pre>
+<pre class="r"><code>seasplot(ts2)</code></pre>
+<pre><code>## Model is being refit with current smoothing parameters but initial states are being re-estimated.
+## Set &#39;use.initial.values=TRUE&#39; if you want to re-use existing initial values.</code></pre>
+<p><img src="/post/2017-06-25-forcasting-in-r_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre><code>## Results of statistical testing
+## Evidence of trend: TRUE  (pval: 0)
+## Evidence of seasonality: TRUE  (pval: 0)</code></pre>
+<p>Instead of acf pacf tests?</p>
+<pre class="r"><code>plot(diff(ts2, 12))</code></pre>
+<p><img src="/post/2017-06-25-forcasting-in-r_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre class="r"><code>plot(diff(y, 12))</code></pre>
+<p><img src="/post/2017-06-25-forcasting-in-r_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<pre class="r"><code>yd &lt;- diff(y, 1)
+plot(yd)</code></pre>
+<p><img src="/post/2017-06-25-forcasting-in-r_files/figure-html/unnamed-chunk-12-2.png" width="672" /></p>
+<pre class="r"><code>ydd &lt;- plot(diff(yd, 12))</code></pre>
+<p><img src="/post/2017-06-25-forcasting-in-r_files/figure-html/unnamed-chunk-12-3.png" width="672" /></p>
+<pre class="r"><code>ydd</code></pre>
+<pre><code>## NULL</code></pre>
