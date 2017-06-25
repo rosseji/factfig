@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.22.1" />
+
+
+<title>Neural Networks for FCing - Factions and Figures</title>
+<meta property="og:title" content="Neural Networks for FCing - Factions and Figures">
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="../../../../css/fonts.css" media="all">
+<link rel="stylesheet" href="../../../../css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="../../../../" class="nav-logo">
+    <img src="../../../../images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="../../../../about/">About</a></li>
+    
+    <li><a href="https://github.com/rstudio/blogdown">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/rstudio">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    <h1 class="article-title">Neural Networks for FCing</h1>
+
+    
+    <span class="article-date">2017/06/25</span>
+    
+
+    <div class="article-content">
+      <p>Woh, didn’t think we’d put putting this into practive so soon!</p>
+<pre class="r"><code>#neural networks
+fit.nnetar &lt;- nnetar(ts2)
+print(fit.nnetar)</code></pre>
+<pre><code>## Series: ts2 
+## Model:  NNAR(1,1,2)[12] 
+## Call:   nnetar(y = ts2)
+## 
+## Average of 20 networks, each of which is
+## a 2-2-1 network with 9 weights
+## options were - linear output units 
+## 
+## sigma^2 estimated as 6703</code></pre>
+<pre class="r"><code>frc.nnetar &lt;- forecast(fit.nnetar, h = 12)
+plot(frc.nnetar)</code></pre>
+<p><img src="../../../../post/2017-06-25-neural-networks-for-fcing_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="../../../../index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="../../../../images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

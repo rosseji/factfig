@@ -39,6 +39,16 @@ setwd(&amp;quot;/Users/rosseji/Dropbox/TrendLock/ISF/forecasting with R/&amp;quo
     </item>
     
     <item>
+      <title>Neural Networks for FCing</title>
+      <link>/2017/06/25/neural-networks-for-fcing/</link>
+      <pubDate>Sun, 25 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/06/25/neural-networks-for-fcing/</guid>
+      <description>Woh, didn’t think we’d put putting this into practive so soon!
+#neural networks fit.nnetar &amp;lt;- nnetar(ts2) print(fit.nnetar) ## Series: ts2 ## Model: NNAR(1,1,2)[12] ## Call: nnetar(y = ts2) ## ## Average of 20 networks, each of which is ## a 2-2-1 network with 9 weights ## options were - linear output units ## ## sigma^2 estimated as 6703 frc.nnetar &amp;lt;- forecast(fit.nnetar, h = 12) plot(frc.nnetar) </description>
+    </item>
+    
+    <item>
       <title>R Markdown</title>
       <link>/2017/06/14/r-markdown/</link>
       <pubDate>Wed, 14 Jun 2017 00:00:00 +0000</pubDate>
