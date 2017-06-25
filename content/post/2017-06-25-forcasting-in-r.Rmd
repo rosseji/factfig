@@ -1,0 +1,127 @@
+---
+title: Forcasting In R
+author: Ross
+date: '2017-06-25'
+slug: forcasting-in-r
+categories:
+  - R
+  - Forecast
+tags: []
+---
+
+Just some notes, findings and tips from my workshop.
+
+Never knew what `%%` does. It gives the mode...
+
+```{r}
+7 %% 2
+
+```
+
+
+*Exponetial smoothing*
+
+Straight line through the data....
+
+`forcast` packge defaults to Akaike's Information Criterion (AIC) for it's selection...
+
+
+Some tools that my tutors made:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+invisible(library(forecast))
+invisible(library(TStools))
+
+```
+
+```{r}
+setwd("/Users/rosseji/Dropbox/TrendLock/ISF/forecasting with R/")
+# Load the three time series, as before
+ts1 <- ts(scan("ts1.txt"), start=c(2011,1), frequency=4)
+ts2 <- ts(scan("ts2.txt"), start=c(2011,1), frequency=12)
+ts3 <- ts(scan("ts3.txt"), start=c(2011,1), frequency=12)
+
+# Let us store the time series to be explored in variable `y' so that we can  
+# repeat the analysis easily with new data if needed.
+y <- ts2
+
+# First we plot the series to get a general impression
+plot(y)
+
+
+```
+
+```{r}
+# ----- Trend -----
+# Let us look for trend in the data, by calculating the Centred Moving
+# Average
+cma <- cmav(y, outplot=1)
+print(cma)
+
+cmav(y, outplot=1, fill=T)
+
+```
+
+```{r}
+
+#Seasonality
+seasplot(ts2)
+
+seasplot(ts1)
+
+
+```
+
+Addative vs Multiplicative
+
+An argument in decompse. In the ts below we can that the seasonality grows as time goes on (ie the y components widens)
+
+```{r}
+plot(ts2)
+
+```
+
+
+Seeing internal trends... (like two peaks)
+
+```{r}
+seasplot(y,outplot=3)
+```
+
+
+Test in a moving average
+
+Non-paramatric test don't assume norm dist and hence are closer to realistic data...
+
+```{r}
+coxstuart(cma)
+
+```
+
+Test seasonality
+
+```{r}
+seasplot(cma)
+
+```
+
+```{r}
+seasplot(ts2)
+
+```
+
+
+Instead of acf pacf tests?
+
+```{r}
+plot(diff(ts2, 12))
+
+```
+
+```{r}
+plot(diff(y, 12))
+yd <- diff(y, 1)
+plot(yd)
+ydd <- plot(diff(yd, 12))
+ydd
+```

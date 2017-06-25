@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.22.1" />
+
+
+<title>Forcasting In R - Factions and Figures</title>
+<meta property="og:title" content="Forcasting In R - Factions and Figures">
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="../../../../css/fonts.css" media="all">
+<link rel="stylesheet" href="../../../../css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="../../../../" class="nav-logo">
+    <img src="../../../../images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="../../../../about/">About</a></li>
+    
+    <li><a href="https://github.com/rstudio/blogdown">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/rstudio">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">3 min read</span>
+    
+
+    <h1 class="article-title">Forcasting In R</h1>
+
+    
+    <span class="article-date">2017/06/25</span>
+    
+
+    <div class="article-content">
+      <p>Just some notes, findings and tips from my workshop.</p>
+<p>Never knew what <code>%%</code> does. It gives the mode…</p>
+<pre class="r"><code>7 %% 2</code></pre>
+<pre><code>## [1] 1</code></pre>
+<p><em>Exponetial smoothing</em></p>
+<p>Straight line through the data….</p>
+<p><code>forcast</code> packge defaults to Akaike’s Information Criterion (AIC) for it’s selection…</p>
+<p>Some tools that my tutors made:</p>
+<pre><code>## Loading required package: zoo</code></pre>
+<pre><code>## 
+## Attaching package: &#39;zoo&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     as.Date, as.Date.numeric</code></pre>
+<pre><code>## Loading required package: tseries</code></pre>
+<pre><code>## Loading required package: smooth</code></pre>
+<pre><code>## This is package &quot;smooth&quot;, v1.9.9</code></pre>
+<pre><code>## Loading required package: MAPA</code></pre>
+<pre><code>## Loading required package: parallel</code></pre>
+<pre><code>## Loading required package: RColorBrewer</code></pre>
+<pre><code>## Loading required package: glmnet</code></pre>
+<pre><code>## Loading required package: Matrix</code></pre>
+<pre><code>## Loading required package: foreach</code></pre>
+<pre><code>## Loaded glmnet 2.0-10</code></pre>
+<pre><code>## Loading required package: neuralnet</code></pre>
+<pre><code>## Loading required package: MASS</code></pre>
+<pre><code>## Loading required package: plotrix</code></pre>
+<pre><code>## 
+## Attaching package: &#39;TStools&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:smooth&#39;:
+## 
+##     sowhat</code></pre>
+<pre class="r"><code>setwd(&quot;/Users/rosseji/Dropbox/TrendLock/ISF/forecasting with R/&quot;)
+# Load the three time series, as before
+ts1 &lt;- ts(scan(&quot;ts1.txt&quot;), start=c(2011,1), frequency=4)
+ts2 &lt;- ts(scan(&quot;ts2.txt&quot;), start=c(2011,1), frequency=12)
+ts3 &lt;- ts(scan(&quot;ts3.txt&quot;), start=c(2011,1), frequency=12)
+
+# Let us store the time series to be explored in variable `y&#39; so that we can  
+# repeat the analysis easily with new data if needed.
+y &lt;- ts2
+
+# First we plot the series to get a general impression
+plot(y)
+
+# ----- Trend -----
+# Let us look for trend in the data, by calculating the Centred Moving
+# Average
+cma &lt;- cmav(y, outplot=1)</code></pre>
+<pre><code>## Model is being refit with current smoothing parameters but initial states are being re-estimated.
+## Set &#39;use.initial.values=TRUE&#39; if you want to re-use existing initial values.</code></pre>
+<p><img src="../../../../post/2017-06-25-forcasting-in-r_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>print(cma)</code></pre>
+<pre><code>##           Jan      Feb      Mar      Apr      May      Jun      Jul
+## 2011 2659.533 2673.576 2687.619 2701.662 2715.705 2729.748 2743.792
+## 2012 2857.417 2877.625 2900.708 2926.958 2951.000 2970.708 2985.583
+## 2013 3097.250 3123.875 3152.542 3174.375 3195.250 3215.542 3235.042
+## 2014 3358.375 3382.542 3394.708 3402.625 3412.292 3430.125 3458.042
+## 2015 3614.167 3654.917 3696.167 3729.208 3762.042 3793.042 3824.042
+##           Aug      Sep      Oct      Nov      Dec
+## 2011 2757.833 2781.042 2801.042 2813.125 2834.042
+## 2012 2998.333 3008.833 3025.167 3051.875 3076.500
+## 2013 3251.208 3268.625 3290.833 3313.750 3335.208
+## 2014 3486.667 3517.083 3543.583 3564.083 3585.500
+## 2015 3855.042 3886.042 3917.042 3948.043 3979.043</code></pre>
+<pre class="r"><code>cmav(y, outplot=1, fill=FALSE)</code></pre>
+<p><img src="../../../../post/2017-06-25-forcasting-in-r_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<pre><code>##           Jan      Feb      Mar      Apr      May      Jun      Jul
+## 2011       NA       NA       NA       NA       NA       NA 2743.792
+## 2012 2857.417 2877.625 2900.708 2926.958 2951.000 2970.708 2985.583
+## 2013 3097.250 3123.875 3152.542 3174.375 3195.250 3215.542 3235.042
+## 2014 3358.375 3382.542 3394.708 3402.625 3412.292 3430.125 3458.042
+## 2015 3614.167 3654.917 3696.167 3729.208 3762.042 3793.042       NA
+##           Aug      Sep      Oct      Nov      Dec
+## 2011 2757.833 2781.042 2801.042 2813.125 2834.042
+## 2012 2998.333 3008.833 3025.167 3051.875 3076.500
+## 2013 3251.208 3268.625 3290.833 3313.750 3335.208
+## 2014 3486.667 3517.083 3543.583 3564.083 3585.500
+## 2015       NA       NA       NA       NA       NA</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="../../../../index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="../../../../images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

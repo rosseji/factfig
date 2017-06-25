@@ -6,10 +6,25 @@
     <description>Recent content in Posts on Factions and Figures</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 14 Jun 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 Jun 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Forcasting In R</title>
+      <link>/2017/06/25/forcasting-in-r/</link>
+      <pubDate>Sun, 25 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/06/25/forcasting-in-r/</guid>
+      <description>Just some notes, findings and tips from my workshop.
+Never knew what %% does. It gives the mode…
+7 %% 2 ## [1] 1 Exponetial smoothing
+Straight line through the data….
+forcast packge defaults to Akaike’s Information Criterion (AIC) for it’s selection…
+Some tools that my tutors made:
+## Loading required package: zoo ## ## Attaching package: &amp;#39;zoo&amp;#39; ## The following objects are masked from &amp;#39;package:base&amp;#39;: ## ## as.Date, as.Date.numeric ## Loading required package: tseries ## Loading required package: smooth ## This is package &amp;quot;smooth&amp;quot;, v1.</description>
+    </item>
     
     <item>
       <title>R Markdown</title>
