@@ -1,0 +1,43 @@
+---
+title: Intermittent demand forecasting
+author: Ross
+date: '2017-06-25'
+slug: intermittent-demand-forecasting
+categories:
+  - R
+  - '#stats'
+tags: []
+---
+
+Intermittent demand forecasting
+
+Like... Slow moving items, like bottles of wine?
+
+```{r}
+
+setwd("/Users/rosseji/Dropbox/TrendLock/ISF/forecasting with R/")
+ts1.test <- ts(scan("ts1out.txt"), start=c(2016,1), frequency=4)
+ts2.test <- ts(scan("ts2out.txt"), start=c(2016,1), frequency=12)
+
+# Load the necessary library
+library(tsintermittent)
+
+# Load the third time series
+y <- ts(scan("ts3.txt"), start=c(2011,1), frequency=12)
+y.test <- ts(scan("ts3out.txt"), start=c(2016,1), frequency=12)
+# Set the forecats horizon to be equal to the test set
+h <- length(y.test)
+
+# First we plot the series to get a general impression
+plot(y)
+
+
+# Croston's method
+f.crost <- crost(y,h=h,outplot=1)
+# The output contains various results which are documented in the function help.
+print(f.crost)
+# $frc.out is the out-of-sample forecast so we will retain only this
+f.crost <- f.crost$frc.out
+
+```
+
