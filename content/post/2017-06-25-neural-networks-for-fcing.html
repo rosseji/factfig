@@ -1,0 +1,29 @@
+---
+title: Neural Networks for FCing
+author: Ross
+date: '2017-06-25'
+slug: neural-networks-for-fcing
+categories:
+  - R
+  - Forecast
+tags: []
+---
+
+
+
+<p>Woh, didn’t think we’d put putting this into practive so soon!</p>
+<pre class="r"><code>#neural networks
+fit.nnetar &lt;- nnetar(ts2)
+print(fit.nnetar)</code></pre>
+<pre><code>## Series: ts2 
+## Model:  NNAR(1,1,2)[12] 
+## Call:   nnetar(y = ts2)
+## 
+## Average of 20 networks, each of which is
+## a 2-2-1 network with 9 weights
+## options were - linear output units 
+## 
+## sigma^2 estimated as 6703</code></pre>
+<pre class="r"><code>frc.nnetar &lt;- forecast(fit.nnetar, h = 12)
+plot(frc.nnetar)</code></pre>
+<p><img src="/post/2017-06-25-neural-networks-for-fcing_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
