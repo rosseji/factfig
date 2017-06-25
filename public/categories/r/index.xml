@@ -39,6 +39,17 @@ setwd(&amp;quot;/Users/rosseji/Dropbox/TrendLock/ISF/forecasting with R/&amp;quo
     </item>
     
     <item>
+      <title>Intermittent demand forecasting</title>
+      <link>/2017/06/25/intermittent-demand-forecasting/</link>
+      <pubDate>Sun, 25 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/06/25/intermittent-demand-forecasting/</guid>
+      <description>Intermittent demand forecasting
+Like… Slow moving items, like bottles of wine?
+setwd(&amp;quot;/Users/rosseji/Dropbox/TrendLock/ISF/forecasting with R/&amp;quot;) ts1.test &amp;lt;- ts(scan(&amp;quot;ts1out.txt&amp;quot;), start=c(2016,1), frequency=4) ts2.test &amp;lt;- ts(scan(&amp;quot;ts2out.txt&amp;quot;), start=c(2016,1), frequency=12) # Load the necessary library library(tsintermittent) ## Loading required package: MAPA ## Loading required package: forecast ## Loading required package: parallel ## Loading required package: RColorBrewer ## Loading required package: smooth ## This is package &amp;quot;smooth&amp;quot;, v1.9.9 # Load the third time series y &amp;lt;- ts(scan(&amp;quot;ts3.txt&amp;quot;), start=c(2011,1), frequency=12) y.</description>
+    </item>
+    
+    <item>
       <title>Neural Networks for FCing</title>
       <link>/2017/06/25/neural-networks-for-fcing/</link>
       <pubDate>Sun, 25 Jun 2017 00:00:00 +0000</pubDate>
