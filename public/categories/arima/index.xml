@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Forecast on Factions and Figures</title>
-    <link>/categories/forecast/</link>
-    <description>Recent content in Forecast on Factions and Figures</description>
+    <title>Arima on Factions and Figures</title>
+    <link>/categories/arima/</link>
+    <description>Recent content in Arima on Factions and Figures</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 25 Jun 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/forecast/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/arima/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -21,21 +21,6 @@
 ARIMA We can build ARIMA using the auto.arima function from the forecast package
 fit.arima &amp;lt;- auto.arima(y) print(fit.arima) ## Series: y ## ARIMA(1,1,1)(0,1,0)[12] ## ## Coefficients: ## ar1 ma1 ## 0.3698 -0.8957 ## s.e. 0.1780 0.1001 ## ## sigma^2 estimated as 8754: log likelihood=-279.46 ## AIC=564.92 AICc=565.48 BIC=570.47 # We produce the forecast in a similar way f.arima &amp;lt;- forecast(fit.arima,h=12) plot(f.arima) lines(y.test,col=&amp;quot;red&amp;quot;) TBATS (stands for something…)
 Similar to ETS, TBATS also offers a decomposition of the series Works with hourly and daily data!</description>
-    </item>
-    
-    <item>
-      <title>Forcasting In R</title>
-      <link>/2017/06/25/forcasting-in-r/</link>
-      <pubDate>Sun, 25 Jun 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/2017/06/25/forcasting-in-r/</guid>
-      <description>Just some notes, findings and tips from my workshop.
-Never knew what %% does. It gives the mode…
-7 %% 2 ## [1] 1 Exponetial smoothing
-Straight line through the data….
-forcast packge defaults to Akaike’s Information Criterion (AIC) for it’s selection…
-Some tools that my tutors made:
-setwd(&amp;quot;/Users/rosseji/Dropbox/TrendLock/ISF/forecasting with R/&amp;quot;) # Load the three time series, as before ts1 &amp;lt;- ts(scan(&amp;quot;ts1.txt&amp;quot;), start=c(2011,1), frequency=4) ts2 &amp;lt;- ts(scan(&amp;quot;ts2.txt&amp;quot;), start=c(2011,1), frequency=12) ts3 &amp;lt;- ts(scan(&amp;quot;ts3.</description>
     </item>
     
   </channel>

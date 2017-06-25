@@ -12,6 +12,18 @@
     
     
     <item>
+      <title>ARIMA and TBATS</title>
+      <link>/2017/06/25/arima-and-random-walk/</link>
+      <pubDate>Sun, 25 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/06/25/arima-and-random-walk/</guid>
+      <description>And the forecasting begins
+ARIMA We can build ARIMA using the auto.arima function from the forecast package
+fit.arima &amp;lt;- auto.arima(y) print(fit.arima) ## Series: y ## ARIMA(1,1,1)(0,1,0)[12] ## ## Coefficients: ## ar1 ma1 ## 0.3698 -0.8957 ## s.e. 0.1780 0.1001 ## ## sigma^2 estimated as 8754: log likelihood=-279.46 ## AIC=564.92 AICc=565.48 BIC=570.47 # We produce the forecast in a similar way f.arima &amp;lt;- forecast(fit.arima,h=12) plot(f.arima) lines(y.test,col=&amp;quot;red&amp;quot;) TBATS (stands for something…)
+Similar to ETS, TBATS also offers a decomposition of the series Works with hourly and daily data!</description>
+    </item>
+    
+    <item>
       <title>Forcasting In R</title>
       <link>/2017/06/25/forcasting-in-r/</link>
       <pubDate>Sun, 25 Jun 2017 00:00:00 +0000</pubDate>

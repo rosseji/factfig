@@ -1,0 +1,69 @@
+---
+title: ARIMA and TBATS
+author: Ross
+date: '2017-06-25'
+slug: arima-and-random-walk
+categories:
+  - R
+  - Forecast
+  - '#stats'
+  - ARIMA
+tags: []
+---
+
+And the forecasting begins
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+invisible(library(forecast))
+invisible(library(TStools))
+library(forecast)
+library(MAPA)
+library(TStools)
+
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+setwd("/Users/rosseji/Dropbox/TrendLock/ISF/forecasting with R/")
+# Load the three time series, as before
+ts1 <- ts(scan("ts1.txt"), start=c(2011,1), frequency=4)
+ts2 <- ts(scan("ts2.txt"), start=c(2011,1), frequency=12)
+# In order to evaluate our forecasts let us load some test data as well. 
+ts1.test <- ts(scan("ts1out.txt"), start=c(2016,1), frequency=4)
+ts2.test <- ts(scan("ts2out.txt"), start=c(2016,1), frequency=12)
+
+# Let us first model ts2
+y <- ts2
+y.test <- ts2.test
+
+# Let us store the time series to be explored in variable `y' so that we can  
+# repeat the analysis easily with new data if needed.
+y <- ts2
+```
+ARIMA
+We can build ARIMA using the auto.arima function from the forecast package
+
+
+```{r}
+fit.arima <- auto.arima(y)
+print(fit.arima)
+# We produce the forecast in a similar way
+f.arima <- forecast(fit.arima,h=12)
+plot(f.arima)
+lines(y.test,col="red")
+```
+
+
+TBATS (stands for something...)
+
+Similar to ETS, TBATS also offers a decomposition of the series
+Works with hourly and daily data!!!
+```{r}
+
+fit.tbats <- tbats(y)
+f.tbats <- forecast(fit.tbats,h=12)
+plot(f.tbats)
+lines(y.test,col="red")
+# 
+plot(fit.tbats)
+```

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.22.1" />
+
+
+<title>ARIMA and TBATS - Factions and Figures</title>
+<meta property="og:title" content="ARIMA and TBATS - Factions and Figures">
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="../../../../css/fonts.css" media="all">
+<link rel="stylesheet" href="../../../../css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="../../../../" class="nav-logo">
+    <img src="../../../../images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="../../../../about/">About</a></li>
+    
+    <li><a href="https://github.com/rstudio/blogdown">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/rstudio">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    <h1 class="article-title">ARIMA and TBATS</h1>
+
+    
+    <span class="article-date">2017/06/25</span>
+    
+
+    <div class="article-content">
+      <p>And the forecasting begins</p>
+<p>ARIMA We can build ARIMA using the auto.arima function from the forecast package</p>
+<pre class="r"><code>fit.arima &lt;- auto.arima(y)
+print(fit.arima)</code></pre>
+<pre><code>## Series: y 
+## ARIMA(1,1,1)(0,1,0)[12]                    
+## 
+## Coefficients:
+##          ar1      ma1
+##       0.3698  -0.8957
+## s.e.  0.1780   0.1001
+## 
+## sigma^2 estimated as 8754:  log likelihood=-279.46
+## AIC=564.92   AICc=565.48   BIC=570.47</code></pre>
+<pre class="r"><code># We produce the forecast in a similar way
+f.arima &lt;- forecast(fit.arima,h=12)
+plot(f.arima)
+lines(y.test,col=&quot;red&quot;)</code></pre>
+<p><img src="../../../../post/2017-06-25-arima-and-random-walk_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>TBATS (stands for something…)</p>
+<p>Similar to ETS, TBATS also offers a decomposition of the series Works with hourly and daily data!!!</p>
+<pre class="r"><code>fit.tbats &lt;- tbats(y)
+f.tbats &lt;- forecast(fit.tbats,h=12)
+plot(f.tbats)
+lines(y.test,col=&quot;red&quot;)</code></pre>
+<p><img src="../../../../post/2017-06-25-arima-and-random-walk_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code># 
+plot(fit.tbats)</code></pre>
+<p><img src="../../../../post/2017-06-25-arima-and-random-walk_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="../../../../index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="../../../../images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+
