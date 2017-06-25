@@ -34,5 +34,17 @@ Like… Slow moving items, like bottles of wine?
 setwd(&amp;quot;/Users/rosseji/Dropbox/TrendLock/ISF/forecasting with R/&amp;quot;) ts1.test &amp;lt;- ts(scan(&amp;quot;ts1out.txt&amp;quot;), start=c(2016,1), frequency=4) ts2.test &amp;lt;- ts(scan(&amp;quot;ts2out.txt&amp;quot;), start=c(2016,1), frequency=12) # Load the necessary library library(tsintermittent) ## Loading required package: MAPA ## Loading required package: forecast ## Loading required package: parallel ## Loading required package: RColorBrewer ## Loading required package: smooth ## This is package &amp;quot;smooth&amp;quot;, v1.9.9 # Load the third time series y &amp;lt;- ts(scan(&amp;quot;ts3.txt&amp;quot;), start=c(2011,1), frequency=12) y.</description>
     </item>
     
+    <item>
+      <title>Rgression techniques</title>
+      <link>/2017/06/25/rgression-techniques/</link>
+      <pubDate>Sun, 25 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/06/25/rgression-techniques/</guid>
+      <description>Causal forecasting with regression
+Annoyingly have to print all the code together becuase they don’t want to use ggplot…
+Some more complex data, data with spikes that might be caused by promotions:
+setwd(&amp;quot;/Users/rosseji/Dropbox/TrendLock/ISF/forecasting with R/&amp;quot;) sales &amp;lt;- scan(&amp;quot;sales.txt&amp;quot;) # Plot the sales as a line plot(sales, type=&amp;quot;l&amp;quot;, xlab=&amp;quot;Weeks&amp;quot;, ylab=&amp;quot;Sales&amp;quot;) # Save the length of the sales into a variable n &amp;lt;- length(sales) # Scan the promotional data and save into a data frame promos &amp;lt;- data.</description>
+    </item>
+    
   </channel>
 </rss>
