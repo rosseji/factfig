@@ -60,6 +60,18 @@ setwd(&amp;quot;/Users/rosseji/Dropbox/TrendLock/ISF/forecasting with R/&amp;quo
     </item>
     
     <item>
+      <title>Rgression techniques</title>
+      <link>/2017/06/25/rgression-techniques/</link>
+      <pubDate>Sun, 25 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/06/25/rgression-techniques/</guid>
+      <description>Causal forecasting with regression
+Annoyingly have to print all the code together becuase they don’t want to use ggplot…
+Some more complex data, data with spikes that might be caused by promotions:
+setwd(&amp;quot;/Users/rosseji/Dropbox/TrendLock/ISF/forecasting with R/&amp;quot;) sales &amp;lt;- scan(&amp;quot;sales.txt&amp;quot;) # Plot the sales as a line plot(sales, type=&amp;quot;l&amp;quot;, xlab=&amp;quot;Weeks&amp;quot;, ylab=&amp;quot;Sales&amp;quot;) # Save the length of the sales into a variable n &amp;lt;- length(sales) # Scan the promotional data and save into a data frame promos &amp;lt;- data.</description>
+    </item>
+    
+    <item>
       <title>R Markdown</title>
       <link>/2017/06/14/r-markdown/</link>
       <pubDate>Wed, 14 Jun 2017 00:00:00 +0000</pubDate>

@@ -1,0 +1,98 @@
+---
+title: Rgression techniques
+author: Ross
+date: '2017-06-25'
+slug: rgression-techniques
+categories:
+  - R
+  - '#stats'
+tags: []
+---
+
+Causal forecasting with regression
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+invisible(library(forecast))
+invisible(library(TStools))
+library(forecast)
+library(MAPA)
+library(TStools)
+
+
+```
+
+Annoyingly have to print all the code together becuase they don't want to use ggplot...
+
+
+Some more complex data, data with spikes that might be caused by promotions:
+
+
+```{r}
+setwd("/Users/rosseji/Dropbox/TrendLock/ISF/forecasting with R/")
+sales <- scan("sales.txt") 
+# Plot the sales as a line
+plot(sales, type="l", xlab="Weeks", ylab="Sales")
+# Save the length of the sales into a variable
+n <- length(sales)
+# Scan the promotional data and save into a data frame
+promos <- data.frame(promo1=scan("promo1.txt"), promo2=scan("promo2.txt"), promo3=scan("promo3.txt"))
+# Diplay the data frame in the console
+head(promos)
+# Save the length of the information regarding forthcoming promotional activity (or forecasting horizon)
+h <- nrow(promos)-n 
+
+# Plot the promotional activity information on the existing plot
+points(which(promos[,1]==1), sales[which(promos[,1]==1)], pch=1, col="blue", cex=1.5, lwd=2)
+points(which(promos[,2]==1), sales[which(promos[,2]==1)], pch=2, col="red", cex=1.5)
+points(which(promos[,3]==1), sales[which(promos[,3]==1)], pch=3, col="orange", cex=1)
+
+# Fit an additive regression model
+fit1 <- lm(sales ~ promo1 + promo2 + promo3, promos[1:n,])
+# Return the summary of the model
+summary(fit1)
+# Add a new line (the fit of the model) on the existing graph
+lines(fit1$fit, col="blue") 
+
+# Create lagged variables of the promotions
+promos_lag <- rbind(c(0,0,0), promos)
+names(promos_lag) <- c("promo1_lag", "promo2_lag", "promo3_lag")
+# Combine the two data frames
+promos <- cbind(promos, promos_lag[1:(n+h),])
+# Diplay the expanded data frame in the console
+head(promos)
+
+# Fit an additive regression model, adding the lagged effects of the promotions
+fit2 <- lm(sales ~ promo1 + promo2 + promo3 + promo1_lag + promo2_lag + promo3_lag, promos[1:n,])
+# Return the summary of the model
+summary(fit2) 
+# Add a new line (the fit of the model) on the existing graph
+lines(fit2$fit, col="green") 
+
+# Calculate the out-of-sample forecasts, based on the available information on forthcoming promotions
+fcs <- predict(fit2, promos[(n+1):(n+h),])
+fcs
+
+# Plot the sales as a line
+plot(sales, type="l", xlab="Weeks", ylab="Sales", xlim=c(1,109))
+# Plot the forecasts as a new line
+lines(x=(n+1):(n+h), fcs, col="blue")
+
+# Calculate the natural logarithm of the sales
+logsales <- log(sales) 
+# Fit a regression model
+fitlog <- lm(logsales ~ promo1 + promo2 + promo3 + promo1_lag + promo2_lag + promo3_lag, promos[1:n,])
+# Return the summary of the model
+summary(fitlog) 
+# Plot the sales as a line
+plot(sales, type="l", lwd=2)
+# Add a line for the fitted values (which are transformed using the exponential function)
+lines(exp(fitlog$fit), col="orange")
+
+
+# ----- Selecting independent variables -----
+# Backwards stepwise regression
+step(lm(sales ~ promo1 + promo2 + promo3 + promo1_lag + promo2_lag + promo3_lag, promos[1:n,]))
+
+```
+
+Notice the effecct of being able to lag the the target variables to check for the delayed effect of worse sales!
